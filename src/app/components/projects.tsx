@@ -2,7 +2,7 @@
 
 import { motion } from "motion/react";
 import { useState } from "react";
-import { ExternalLink, Github, Zap } from "lucide-react";
+import { ExternalLink, Zap } from "lucide-react";
 import { projects } from "../../lib/content";
 import { Card } from "./ui/card";
 import { Button } from "./ui/button";

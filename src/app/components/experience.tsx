@@ -120,10 +120,7 @@ export function Experience() {
                         viewport={{ once: true }}
                         className="flex items-start gap-3 group"
                       >
-                        <motion.div
-                          whileHover={{ scale: 1.5, rotate: 90 }}
-                          className="mt-1.5 h-1.5 w-1.5 rounded-full bg-gradient-to-r from-blue-500 to-cyan-500 flex-shrink-0"
-                        />
+                        <div className="mt-2 h-1.5 w-1.5 rounded-full bg-gradient-to-r from-blue-500 to-cyan-500 flex-shrink-0 group-hover:scale-150 transition-transform" />
                         <p className="text-foreground/80 leading-relaxed text-sm">
                           {achievement}
                         </p>

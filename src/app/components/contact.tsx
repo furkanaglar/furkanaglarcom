@@ -1,6 +1,7 @@
 "use client";
 
-import { Mail, Globe, Linkedin, Send } from "lucide-react";
+import { Mail, Globe, Send } from "lucide-react";
+import { SimpleIconLinkedin } from "./simple-icons";
 import { personalInfo } from "../../lib/content";
 import { Card } from "./ui/card";
 import { Button } from "./ui/button";
@@ -34,7 +35,7 @@ export function Contact() {
       shadowColor: "hover:shadow-teal-500/20",
     },
     {
-      icon: Linkedin,
+      icon: SimpleIconLinkedin,
       label: "LinkedIn",
       value: personalInfo.linkedin,
       href: personalInfo.linkedinUrl,
@@ -108,8 +109,14 @@ export function Contact() {
                 viewport={{ once: true }}
               >
                 <motion.div
-                  whileHover={{ y: -8 }}
+                  initial="rest"
+                  animate="rest"
+                  whileHover="hover"
                   transition={{ duration: 0.2 }}
+                  variants={{
+                    rest: { y: 0 },
+                    hover: { y: -8 },
+                  }}
                 >
                   <Card className={`h-full p-6 text-center bg-card border-border/50 ${item.borderColor} transition-all duration-300 hover:shadow-2xl ${item.shadowColor} group relative overflow-hidden`}>
                     {/* Gradient Background on Hover */}
@@ -118,7 +125,10 @@ export function Contact() {
                     <div className="relative z-10">
                       {/* Icon */}
                       <motion.div
-                        whileHover={{ rotate: [0, -15, 15, 0], scale: 1.1 }}
+                        variants={{
+                          rest: { rotate: 0, scale: 1 },
+                          hover: { rotate: [0, -15, 15, 0], scale: 1.1 },
+                        }}
                         transition={{ duration: 0.5 }}
                         className="mx-auto mb-4"
                       >
@@ -172,7 +182,7 @@ export function Contact() {
           transition={{ duration: 0.6, delay: 0.3 }}
           viewport={{ once: true }}
         >
-          <Card className="p-8 md:p-12 bg-card border-border/50 hover:border-blue-500/30 transition-all duration-300 hover:shadow-2xl group relative overflow-hidden">
+          <Card className="p-8 md:p-12 bg-card border-border/50 hover:border-blue-500/30 transition-all duration-300 hover:shadow-[0_25px_50px_-12px_rgba(59,130,246,0.35),0_10px_30px_-10px_rgba(34,211,238,0.35)] group relative overflow-hidden">
             {/* Animated Background Glow */}
             <motion.div
               animate={{

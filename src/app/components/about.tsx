@@ -79,15 +79,7 @@ export function About() {
             <Card className="h-full p-8 md:p-10 bg-gradient-to-br from-card via-card to-blue-50/50 dark:to-blue-950/20 border-border/50 hover:border-blue-500/30 transition-colors duration-300">
               <div className="flex items-start gap-4 mb-6">
                 <motion.div
-                  animate={{
-                    rotate: [0, 360],
-                  }}
-                  transition={{
-                    duration: 20,
-                    repeat: Infinity,
-                    ease: "linear",
-                  }}
-                  className="p-3 bg-gradient-to-br from-blue-500/10 to-cyan-500/10 rounded-2xl"
+                  className="p-3 bg-gradient-to-br from-blue-500/10 to-cyan-500/10 rounded-2xl hover:scale-110 transition-transform duration-300"
                 >
                   <Sparkles className="h-6 w-6 text-blue-600 dark:text-blue-400" />
                 </motion.div>
@@ -111,7 +103,7 @@ export function About() {
                     viewport={{ once: true }}
                     className="flex items-start gap-3 group"
                   >
-                    <div className="mt-1.5 h-1.5 w-1.5 rounded-full bg-blue-500 group-hover:scale-150 transition-transform" />
+                    <div className="mt-2.5 h-1.5 w-1.5 rounded-full bg-blue-500 group-hover:scale-150 transition-transform flex-shrink-0" />
                     <p className="text-foreground/80 leading-relaxed flex-1">
                       {strength}
                     </p>
