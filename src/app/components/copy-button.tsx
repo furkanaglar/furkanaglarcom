@@ -5,6 +5,8 @@ import { motion } from "motion/react";
 import { useState } from "react";
 import { Button } from "./ui/button";
 import { toast } from "sonner";
+import { useLanguage } from "../contexts/language-context";
+import { getContent } from "../../lib/content";
 
 interface CopyButtonProps {
   text: string;
@@ -12,16 +14,20 @@ interface CopyButtonProps {
 }
 
 export function CopyButton({ text, label }: CopyButtonProps) {
+  const { language } = useLanguage();
+  const { ui } = getContent(language);
   const [copied, setCopied] = useState(false);
 
   const handleCopy = async () => {
     try {
       await navigator.clipboard.writeText(text);
       setCopied(true);
-      toast.success(`Copied ${label || "text"} to clipboard`);
+      const labelText = label || ui.copyButton.textLabel;
+      const message = ui.copyButton.copiedToast.replace("{label}", labelText);
+      toast.success(message);
       setTimeout(() => setCopied(false), 2000);
     } catch (err) {
-      toast.error("Failed to copy");
+      toast.error(ui.copyButton.failed);
     }
   };
 
@@ -36,12 +42,12 @@ export function CopyButton({ text, label }: CopyButtonProps) {
         {copied ? (
           <>
             <Check className="h-4 w-4 text-green-500" />
-            Copied
+            {ui.copyButton.copied}
           </>
         ) : (
           <>
             <Copy className="h-4 w-4" />
-            Copy
+            {ui.copyButton.copy}
           </>
         )}
       </Button>

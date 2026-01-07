@@ -2,9 +2,10 @@
 
 import { motion, useInView } from "motion/react";
 import { GraduationCap, Languages, Sparkles } from "lucide-react";
-import { about } from "../../lib/content";
+import { getContent } from "../../lib/content";
 import { Card } from "./ui/card";
 import { useRef, useEffect, useState } from "react";
+import { useLanguage } from "../contexts/language-context";
 
 function Counter({ target, suffix = "" }: { target: number; suffix?: string }) {
   const [count, setCount] = useState(0);
@@ -43,6 +44,9 @@ function Counter({ target, suffix = "" }: { target: number; suffix?: string }) {
 }
 
 export function About() {
+  const { language } = useLanguage();
+  const { about, ui } = getContent(language);
+
   return (
     <section id="about" className="relative py-32 px-4 sm:px-6 lg:px-8 scroll-mt-20">
       <div className="container mx-auto max-w-7xl">
@@ -56,13 +60,13 @@ export function About() {
         >
           <div className="inline-block mb-4">
             <span className="text-sm font-bold mono text-blue-600 dark:text-blue-400 tracking-wider uppercase">
-              // About Me
+              {ui.about.eyebrow}
             </span>
           </div>
           <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6">
-            Building Quality
+            {ui.about.heading}
             <br />
-            <span className="text-muted-foreground">Software Solutions</span>
+            <span className="text-muted-foreground">{ui.about.subheading}</span>
           </h2>
         </motion.div>
 
@@ -84,9 +88,11 @@ export function About() {
                   <Sparkles className="h-6 w-6 text-blue-600 dark:text-blue-400" />
                 </motion.div>
                 <div>
-                  <h3 className="text-2xl font-bold mb-2">Who I Am</h3>
+                  <h3 className="text-2xl font-bold mb-2">
+                    {ui.about.whoTitle}
+                  </h3>
                   <p className="text-muted-foreground text-sm mono">
-                    Quality-driven developer
+                    {ui.about.whoSubtitle}
                   </p>
                 </div>
               </div>
@@ -128,9 +134,11 @@ export function About() {
                   <GraduationCap className="h-6 w-6 text-green-600 dark:text-green-400" />
                 </motion.div>
                 <div className="flex-1 min-w-0">
-                  <h3 className="text-lg font-bold mb-1">Education</h3>
+                  <h3 className="text-lg font-bold mb-1">
+                    {ui.about.educationTitle}
+                  </h3>
                   <p className="text-xs text-muted-foreground mono">
-                    Academic Background
+                    {ui.about.educationSubtitle}
                   </p>
                 </div>
               </div>
@@ -170,9 +178,11 @@ export function About() {
                   <Languages className="h-6 w-6 text-purple-600 dark:text-purple-400" />
                 </motion.div>
                 <div className="flex-1 min-w-0">
-                  <h3 className="text-lg font-bold mb-1">Languages</h3>
+                  <h3 className="text-lg font-bold mb-1">
+                    {ui.about.languagesTitle}
+                  </h3>
                   <p className="text-xs text-muted-foreground mono">
-                    Communication Skills
+                    {ui.about.languagesSubtitle}
                   </p>
                 </div>
               </div>
@@ -210,7 +220,7 @@ export function About() {
                     <Counter target={3} suffix="+" />
                   </motion.p>
                   <p className="text-sm text-muted-foreground">
-                    Years of Experience
+                    {ui.about.statsYears}
                   </p>
                 </div>
                 <div className="text-center md:text-left">
@@ -224,7 +234,7 @@ export function About() {
                     <Counter target={50} suffix="+" />
                   </motion.p>
                   <p className="text-sm text-muted-foreground">
-                    Projects Delivered
+                    {ui.about.statsProjects}
                   </p>
                 </div>
                 <div className="text-center md:text-left">
@@ -238,7 +248,7 @@ export function About() {
                     <Counter target={100} suffix="%" />
                   </motion.p>
                   <p className="text-sm text-muted-foreground">
-                    Client Satisfaction
+                    {ui.about.statsSatisfaction}
                   </p>
                 </div>
               </div>

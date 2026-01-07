@@ -1,24 +1,35 @@
 "use client";
 
 import { motion } from "motion/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ExternalLink, Zap } from "lucide-react";
-import { projects } from "../../lib/content";
+import { getContent } from "../../lib/content";
 import { Card } from "./ui/card";
 import { Button } from "./ui/button";
 import { Badge } from "./ui/badge";
+import { useLanguage } from "../contexts/language-context";
 
 export function Projects() {
-  const [activeFilter, setActiveFilter] = useState("All");
+  const { language } = useLanguage();
+  const { projects, ui } = getContent(language);
+  const allLabel = ui.projects.filterAll;
+  const [activeFilter, setActiveFilter] = useState(allLabel);
 
   // Get all unique categories
-  const allCategories = ["All", ...new Set(projects.flatMap((p) => p.category))];
+  const allCategories = [
+    allLabel,
+    ...new Set(projects.flatMap((p) => p.category)),
+  ];
 
   // Filter projects
   const filteredProjects =
-    activeFilter === "All"
+    activeFilter === allLabel
       ? projects
       : projects.filter((p) => p.category.includes(activeFilter));
+
+  useEffect(() => {
+    setActiveFilter(allLabel);
+  }, [allLabel]);
 
   return (
     <section id="projects" className="relative py-32 px-4 sm:px-6 lg:px-8 scroll-mt-20">
@@ -33,13 +44,15 @@ export function Projects() {
         >
           <div className="inline-block mb-4">
             <span className="text-sm font-bold mono text-teal-600 dark:text-teal-400 tracking-wider uppercase">
-              // Featured Work
+              {ui.projects.eyebrow}
             </span>
           </div>
           <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6">
-            Selected
+            {ui.projects.heading}
             <br />
-            <span className="text-muted-foreground">Projects</span>
+            <span className="text-muted-foreground">
+              {ui.projects.subheading}
+            </span>
           </h2>
 
           {/* Filter Pills */}
@@ -161,7 +174,7 @@ export function Projects() {
                               className="flex items-center gap-2"
                             >
                               <ExternalLink className="h-4 w-4" />
-                              View Project
+                              {ui.projects.viewProject}
                             </a>
                           </Button>
                         </motion.div>
@@ -174,7 +187,7 @@ export function Projects() {
                     {/* Tech Stack */}
                     <div>
                       <h4 className="text-sm font-bold mono text-muted-foreground uppercase tracking-wider mb-4">
-                        Tech Stack
+                        {ui.projects.techStack}
                       </h4>
                       <div className="flex flex-wrap gap-2">
                         {project.stack.map((tech, idx) => (
@@ -200,7 +213,7 @@ export function Projects() {
                     {/* Categories */}
                     <div>
                       <h4 className="text-sm font-bold mono text-muted-foreground uppercase tracking-wider mb-4">
-                        Categories
+                        {ui.projects.categories}
                       </h4>
                       <div className="flex flex-wrap gap-2">
                         {project.category.map((cat, idx) => (
@@ -247,7 +260,7 @@ export function Projects() {
             className="text-center py-16"
           >
             <p className="text-lg text-muted-foreground">
-              No projects found in this category.
+              {ui.projects.noResults}
             </p>
           </motion.div>
         )}

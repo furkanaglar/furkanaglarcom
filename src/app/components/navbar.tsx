@@ -3,12 +3,15 @@
 import { Download, Menu, X } from "lucide-react";
 import { motion } from "motion/react";
 import { useEffect, useState } from "react";
-import { navLinks, personalInfo } from "../../lib/content";
+import { getContent } from "../../lib/content";
 import { Button } from "./ui/button";
 import { ThemeToggle } from "./theme-toggle";
 import { LanguageToggle } from "./language-toggle";
+import { useLanguage } from "../contexts/language-context";
 
 export function Navbar() {
+  const { language } = useLanguage();
+  const { navLinks, personalInfo, ui } = getContent(language);
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("");
   const [isScrolled, setIsScrolled] = useState(false);
@@ -70,11 +73,11 @@ export function Navbar() {
             whileTap={{ scale: 0.98 }}
           >
             <span className="text-xl md:text-2xl font-bold mono">
-              <span className="text-foreground">&lt;</span>
+              <span className="text-foreground pr-0.5">&lt;</span>
               <span className="bg-gradient-to-r from-blue-600 via-cyan-500 to-teal-500 bg-clip-text text-transparent">
                 {personalInfo.name.split(" ")[0]}
               </span>
-              <span className="text-foreground">/&gt;</span>
+              <span className="text-foreground tracking-wide">/&gt;</span>
             </span>
           </motion.a>
 
@@ -123,7 +126,7 @@ export function Navbar() {
               >
                 <a href="/CV_en.pdf" download>
                   <Download className="h-4 w-4" />
-                  CV
+                  {ui.navbar.cv}
                 </a>
               </Button>
             </motion.div>
@@ -139,7 +142,7 @@ export function Navbar() {
               variant="ghost"
               size="icon"
               onClick={() => setIsOpen(!isOpen)}
-              aria-label="Toggle menu"
+              aria-label={ui.navbar.toggleMenu}
             >
               {isOpen ? (
                 <X className="h-5 w-5" />
@@ -181,7 +184,7 @@ export function Navbar() {
                 <Button variant="outline" size="sm" asChild className="w-full gap-2">
                   <a href="/CV_en.pdf" download>
                     <Download className="h-4 w-4" />
-                    Download CV
+                    {ui.navbar.downloadCv}
                   </a>
                 </Button>
               </div>

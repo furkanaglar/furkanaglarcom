@@ -1,9 +1,13 @@
 "use client";
 
 import { motion } from "motion/react";
-import { personalInfo, navLinks } from "../../lib/content";
+import { getContent } from "../../lib/content";
+import { useLanguage } from "../contexts/language-context";
 
 export function Footer() {
+  const { language } = useLanguage();
+  const { personalInfo, navLinks, ui } = getContent(language);
+
   const handleNavClick = (href: string) => {
     const target = document.querySelector(href);
     if (target) {
@@ -29,14 +33,14 @@ export function Footer() {
               className="space-y-4"
             >
               <h3 className="text-2xl font-bold mono">
-                <span className="text-foreground">&lt;</span>
+                <span className="text-foreground pr-0.5">&lt;</span>
                 <span className="bg-gradient-to-r from-blue-600 via-cyan-500 to-teal-500 bg-clip-text text-transparent">
                   {personalInfo.name.split(" ")[0]}
                 </span>
-                <span className="text-foreground">/&gt;</span>
+                <span className="text-foreground tracking-wide">/&gt;</span>
               </h3>
               <p className="text-sm text-muted-foreground leading-relaxed max-w-xs">
-                QA Engineer & Full-Stack Developer building quality software solutions with modern technologies.
+                {ui.footer.blurb}
               </p>
             </motion.div>
 
@@ -48,7 +52,7 @@ export function Footer() {
               viewport={{ once: true }}
             >
               <h4 className="text-sm font-bold mono text-muted-foreground uppercase tracking-wider mb-4">
-                Quick Links
+                {ui.footer.quickLinks}
               </h4>
               <nav className="space-y-3">
                 {navLinks.map((link) => (
@@ -77,7 +81,7 @@ export function Footer() {
               viewport={{ once: true }}
             >
               <h4 className="text-sm font-bold mono text-muted-foreground uppercase tracking-wider mb-4">
-                Get In Touch
+                {ui.footer.getInTouch}
               </h4>
               <div className="space-y-3 text-sm">
                 <a
@@ -116,11 +120,11 @@ export function Footer() {
           >
             <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-muted-foreground">
               <p>
-                © {new Date().getFullYear()} {personalInfo.name}. All rights reserved.
+                © {new Date().getFullYear()} {personalInfo.name}. {ui.footer.rights}
               </p>
               <p className="flex items-center gap-2 mono">
                 <span className="text-blue-500">&lt;/&gt;</span>
-                Built with Next.js + TypeScript
+                {ui.footer.builtWith}
               </p>
             </div>
           </motion.div>

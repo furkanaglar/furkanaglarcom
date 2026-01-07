@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
-import { skills } from "../../lib/content";
+import { getContent } from "../../lib/content";
 import { Card } from "./ui/card";
 import {
   Shield,
@@ -11,6 +11,7 @@ import {
   Server,
   Wrench,
 } from "lucide-react";
+import { useLanguage } from "../contexts/language-context";
 
 const iconMap: Record<string, any> = {
   Shield,
@@ -22,6 +23,9 @@ const iconMap: Record<string, any> = {
 };
 
 export function Skills() {
+  const { language } = useLanguage();
+  const { skills, ui } = getContent(language);
+
   return (
     <section id="skills" className="relative py-32 px-4 sm:px-6 lg:px-8 scroll-mt-20">
       <div className="container mx-auto max-w-7xl">
@@ -35,13 +39,13 @@ export function Skills() {
         >
           <div className="inline-block mb-4">
             <span className="text-sm font-bold mono text-purple-600 dark:text-purple-400 tracking-wider uppercase">
-              // Expertise
+              {ui.skills.eyebrow}
             </span>
           </div>
           <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold">
-            Skills &
+            {ui.skills.heading}
             <br />
-            <span className="text-muted-foreground">Technologies</span>
+            <span className="text-muted-foreground">{ui.skills.subheading}</span>
           </h2>
         </motion.div>
 
@@ -129,7 +133,7 @@ export function Skills() {
         >
           <Card className="inline-block p-8 bg-gradient-to-r from-card via-blue-50/50 dark:via-blue-950/20 to-card border-border/50">
             <p className="text-lg text-foreground/80 mb-4">
-              Always learning and exploring new technologies
+              {ui.skills.ctaTitle}
             </p>
             <div className="flex items-center justify-center gap-2 text-blue-600 dark:text-blue-400">
               <motion.div
@@ -138,7 +142,7 @@ export function Skills() {
               >
                 <Sparkles className="h-5 w-5" />
               </motion.div>
-              <span className="font-bold mono">Continuous Growth Mindset</span>
+              <span className="font-bold mono">{ui.skills.ctaSubtitle}</span>
             </div>
           </Card>
         </motion.div>

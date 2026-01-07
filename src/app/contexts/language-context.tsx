@@ -1,8 +1,7 @@
 "use client";
 
-import { createContext, useContext, useState, ReactNode } from "react";
-
-type Language = "en" | "tr";
+import { createContext, useContext, useEffect, useState, ReactNode } from "react";
+import { defaultLanguage, languageStorageKey, type Language } from "../../lib/i18n";
 
 interface LanguageContextType {
   language: Language;
@@ -12,7 +11,19 @@ interface LanguageContextType {
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [language, setLanguage] = useState<Language>("en");
+  const [language, setLanguage] = useState<Language>(defaultLanguage);
+
+  useEffect(() => {
+    const stored = localStorage.getItem(languageStorageKey);
+    if (stored === "en" || stored === "tr") {
+      setLanguage(stored);
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem(languageStorageKey, language);
+    document.documentElement.lang = language;
+  }, [language]);
 
   return (
     <LanguageContext.Provider value={{ language, setLanguage }}>

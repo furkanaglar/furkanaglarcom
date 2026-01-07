@@ -2,11 +2,14 @@
 
 import { motion, useScroll, useTransform } from "motion/react";
 import { Briefcase, Calendar, MapPin } from "lucide-react";
-import { experience } from "../../lib/content";
+import { getContent } from "../../lib/content";
 import { Card } from "./ui/card";
 import { useRef } from "react";
+import { useLanguage } from "../contexts/language-context";
 
 export function Experience() {
+  const { language } = useLanguage();
+  const { experience, ui } = getContent(language);
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -32,13 +35,15 @@ export function Experience() {
         >
           <div className="inline-block mb-4">
             <span className="text-sm font-bold mono text-cyan-600 dark:text-cyan-400 tracking-wider uppercase">
-              // Career Journey
+              {ui.experience.eyebrow}
             </span>
           </div>
           <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold">
-            Professional
+            {ui.experience.heading}
             <br />
-            <span className="text-muted-foreground">Experience</span>
+            <span className="text-muted-foreground">
+              {ui.experience.subheading}
+            </span>
           </h2>
         </motion.div>
 
@@ -85,7 +90,7 @@ export function Experience() {
                     index % 2 === 0 ? "lg:mr-auto lg:w-[calc(50%-3rem)]" : "lg:ml-auto lg:w-[calc(50%-3rem)]"
                   }`}
                 >
-                  <div className="flex flex-wrap items-start justify-between gap-4 mb-6">
+                  <div className="flex flex-col-reverse sm:flex-row lg:flex-col-reverse xl:flex-row flex-wrap items-start justify-between gap-4 mb-6">
                     <div className="flex-1 min-w-0">
                       <h3 className="text-2xl font-bold mb-2 leading-tight">
                         {exp.title}

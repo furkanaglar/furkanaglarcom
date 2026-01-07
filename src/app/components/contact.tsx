@@ -2,17 +2,20 @@
 
 import { Mail, Globe, Send } from "lucide-react";
 import { SimpleIconLinkedin } from "./simple-icons";
-import { personalInfo } from "../../lib/content";
+import { getContent } from "../../lib/content";
 import { Card } from "./ui/card";
 import { Button } from "./ui/button";
 import { CopyButton } from "./copy-button";
 import { motion } from "motion/react";
+import { useLanguage } from "../contexts/language-context";
 
 export function Contact() {
+  const { language } = useLanguage();
+  const { personalInfo, ui } = getContent(language);
   const contactItems = [
     {
       icon: Mail,
-      label: "Email",
+      label: ui.contact.labels.email,
       value: personalInfo.email,
       href: `mailto:${personalInfo.email}`,
       copyText: personalInfo.email,
@@ -24,7 +27,7 @@ export function Contact() {
     },
     {
       icon: Globe,
-      label: "Website",
+      label: ui.contact.labels.website,
       value: personalInfo.website,
       href: `https://${personalInfo.website}`,
       copyText: personalInfo.website,
@@ -36,7 +39,7 @@ export function Contact() {
     },
     {
       icon: SimpleIconLinkedin,
-      label: "LinkedIn",
+      label: ui.contact.labels.linkedin,
       value: personalInfo.linkedin,
       href: personalInfo.linkedinUrl,
       copyText: personalInfo.linkedinUrl,
@@ -78,11 +81,11 @@ export function Contact() {
         >
           <div className="inline-block mb-4">
             <span className="text-sm font-bold mono text-green-600 dark:text-green-400 tracking-wider uppercase">
-              // Get In Touch
+              {ui.contact.eyebrow}
             </span>
           </div>
           <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6">
-            Let's Connect
+            {ui.contact.heading}
           </h2>
           <motion.p
             initial={{ opacity: 0 }}
@@ -91,8 +94,7 @@ export function Contact() {
             viewport={{ once: true }}
             className="text-xl text-muted-foreground max-w-2xl mx-auto"
           >
-            I'm always open to discussing new projects, opportunities, or
-            collaborations. Feel free to reach out!
+            {ui.contact.description}
           </motion.p>
         </motion.div>
 
@@ -162,7 +164,7 @@ export function Contact() {
                               target={item.href.startsWith("http") ? "_blank" : undefined}
                               rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
                             >
-                              Visit
+                              {ui.contact.visit}
                             </a>
                           </Button>
                         </motion.div>
@@ -205,11 +207,11 @@ export function Contact() {
                     <Send className="h-8 w-8 text-blue-600 dark:text-blue-400" />
                   </div>
                   <h3 className="text-2xl md:text-3xl font-bold">
-                    Ready to start a project?
+                    {ui.contact.readyTitle}
                   </h3>
                 </div>
                 <p className="text-base md:text-lg text-muted-foreground max-w-xl">
-                  Let's discuss how we can work together to bring your ideas to life.
+                  {ui.contact.readyBody}
                 </p>
               </div>
 
@@ -227,7 +229,7 @@ export function Contact() {
                   >
                     <a href={`mailto:${personalInfo.email}`} className="flex items-center gap-2">
                       <Mail className="h-5 w-5" />
-                      Send a Message
+                      {ui.contact.sendMessage}
                     </a>
                   </Button>
                 </motion.div>

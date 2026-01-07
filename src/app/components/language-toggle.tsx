@@ -4,16 +4,19 @@ import { Globe } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import { useState } from "react";
 import { useLanguage } from "../contexts/language-context";
+import { getContent } from "../../lib/content";
 import { Button } from "./ui/button";
 
 export function LanguageToggle() {
   const { language, setLanguage } = useLanguage();
+  const { ui } = getContent(language);
   const [isOpen, setIsOpen] = useState(false);
 
-  const languages = [
-    { code: "en" as const, label: "English", flag: "🇬🇧" },
-    { code: "tr" as const, label: "Türkçe", flag: "🇹🇷" },
-  ];
+  const languages = ui.languageToggle.options as Array<{
+    code: "en" | "tr";
+    label: string;
+    flag: string;
+  }>;
 
   const currentLanguage = languages.find((lang) => lang.code === language) || languages[0];
 
@@ -24,7 +27,7 @@ export function LanguageToggle() {
         size="icon"
         onClick={() => setIsOpen(!isOpen)}
         className="relative"
-        aria-label="Change language"
+        aria-label={ui.languageToggle.ariaLabel}
       >
         <Globe className="h-5 w-5" />
       </Button>
