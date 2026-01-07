@@ -72,7 +72,7 @@ export function Hero() {
               <TypewriterEffect
                 words={quickFacts}
                 className="text-foreground"
-                typeSpeed={80}
+                typeSpeed={50}
                 deleteSpeed={40}
                 delayBetweenWords={1000}
               />

@@ -11,7 +11,7 @@ const en = {
     linkedin: "linkedin.com/in/furkanaglar",
     linkedinUrl: "https://linkedin.com/in/furkanaglar",
   },
-  quickFacts: ["QA Engineer", "WordPress", "Next.js", "DevOps", "AI Destekli"],
+  quickFacts: ["QA Engineer", "WordPress Developer", "Next.js Developer", "DevOps", "Vibe Coder"],
   about: {
     summary:
       "QA Engineer and Full-Stack Developer with a unique blend of quality assurance expertise and hands-on development skills. I transform design concepts into polished, production-ready applications while maintaining rigorous quality standards. My experience spans WordPress theme and plugin development, modern full-stack frameworks like Next.js, and AI-assisted development workflows.",
@@ -341,10 +341,10 @@ const tr = {
     linkedin: "linkedin.com/in/furkanaglar",
     linkedinUrl: "https://linkedin.com/in/furkanaglar",
   },
-  quickFacts: ["QA Engineer", "WordPress", "Next.js", "DevOps", "AI-Assisted"],
+  quickFacts: ["QA Mühendisi", "WordPress Geliştirici", "Next.js Geliştirici", "DevOps", "Vibe Coder"],
   about: {
     summary:
-      "QA Engineer ve Full-Stack Developer olarak, kalite güvence uzmanlığı ile uygulamalı geliştirme becerilerini birleştiriyorum. Tasarım konseptlerini yüksek kalite standartlarını koruyarak production'a hazır, rafine uygulamalara dönüştürüyorum. Deneyimim; WordPress tema ve eklenti geliştirme, Next.js gibi modern full-stack framework'ler ve AI destekli geliştirme iş akışlarını kapsıyor.",
+      "QA Mühendisi ve Full-Stack Geliştirici olarak, kalite güvence uzmanlığı ile uygulamalı geliştirme becerilerini birleştiriyorum. Tasarım konseptlerini yüksek kalite standartlarını koruyarak production'a hazır, rafine uygulamalara dönüştürüyorum. Deneyimim; WordPress tema ve eklenti geliştirme, Next.js gibi modern full-stack framework'ler ve AI destekli geliştirme iş akışlarını kapsıyor.",
     strengths: [
       "QA bakış açısını geliştirme pratiğiyle birleştirerek sorunları production'a ulaşmadan yakalıyorum",
       "Figma'dan production'a sorunsuz bir akış ve piksel hassasiyetinde uygulama",
@@ -354,7 +354,7 @@ const tr = {
     ],
     education: {
       institution: "Sinop Üniversitesi",
-      degree: "Bilgisayar Ağları ve İnternet Teknolojileri Ön Lisans",
+      degree: "İnternet ve Ağ Teknolojileri Bölümü Ön Lisans",
       period: "Eyl 2019 – Haz 2021",
       gpa: "3.65",
     },

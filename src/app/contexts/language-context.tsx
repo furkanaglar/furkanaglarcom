@@ -17,6 +17,11 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     const stored = localStorage.getItem(languageStorageKey);
     if (stored === "en" || stored === "tr") {
       setLanguage(stored);
+      return;
+    }
+    const browserLanguages = navigator.languages ?? [navigator.language];
+    if (browserLanguages.some((lang) => lang?.toLowerCase().startsWith("tr"))) {
+      setLanguage("tr");
     }
   }, []);
 
