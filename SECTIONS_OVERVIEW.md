@@ -50,7 +50,7 @@ Visual guide to the one-page portfolio structure and layout.
 │  ┌─────────────────┐  ┌─────────────────┐       │
 │  │ 🎓 Education    │  │ 🌍 Languages    │       │
 │  │ Sinop Univ.     │  │ Turkish (Native)│       │
-│  │ GPA: 3.65       │  │ English (B1)    │       │
+│  │ GPA: 3.62       │  │ English (B1)    │       │
 │  └─────────────────┘  └─────────────────┘       │
 └─────────────────────────────────────────────────┘
 

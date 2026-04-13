@@ -26,7 +26,7 @@ const en = {
       institution: "Sinop University",
       degree: "Associate Degree in Computer Networks and Internet Technologies",
       period: "Sep 2019 – Jun 2021",
-      gpa: "3.65",
+      gpa: "3.62",
     },
     languages: [
       { name: "Turkish", level: "Native" },
@@ -40,7 +40,7 @@ const en = {
       title: "QA Engineer & AI-Assisted Software Developer",
       company: "OctaSys",
       location: "Remote",
-      period: "Jun 2025 – Present",
+      period: "Jun 2025 – Feb 2026",
       achievements: [
         "Spearheading quality assurance processes across web and mobile applications, ensuring zero critical bugs reach production",
         "Building and maintaining automated test suites to accelerate release cycles",
@@ -356,7 +356,7 @@ const tr = {
       institution: "Sinop Üniversitesi",
       degree: "İnternet ve Ağ Teknolojileri Bölümü Ön Lisans",
       period: "Eyl 2019 – Haz 2021",
-      gpa: "3.65",
+      gpa: "3.62",
     },
     languages: [
       { name: "Türkçe", level: "Ana Dil" },
@@ -370,7 +370,7 @@ const tr = {
       title: "QA Engineer & AI-Assisted Software Developer",
       company: "OctaSys",
       location: "Uzaktan",
-      period: "Haz 2025 – Günümüz",
+      period: "Haz 2025 – Şubat 2026",
       achievements: [
         "Web ve mobil uygulamalarda kalite güvence süreçlerine liderlik ederek kritik hataların production'a ulaşmamasını sağladım",
         "Release döngülerini hızlandırmak için otomatik test paketleri geliştirdim ve sürdürdüm",

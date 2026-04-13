@@ -212,7 +212,7 @@ export function Hero() {
                     <span className="text-muted-foreground">.</span>
                     <span className="text-blue-500">{ui.hero.codeYearsLabel}</span>
                     <span className="text-muted-foreground"> {">"}= </span>
-                    <span className="text-orange-500">3</span>
+                    <span className="text-orange-500">4</span>
                   </code>
                 </motion.div>
               </div>

@@ -127,7 +127,7 @@ All content is **factual and based on the CV provided**:
 ### Education
 - Sinop University (Sep 2019 – Jun 2021)
 - Computer Networks and Internet Technologies
-- GPA: 3.65
+- GPA: 3.62
 
 ### Languages
 - Turkish (Native)
