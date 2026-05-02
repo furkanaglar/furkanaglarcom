@@ -21,6 +21,8 @@ export const personSchema = {
   knowsAbout: [
     "Quality Assurance",
     "WordPress Development",
+    "Elementor",
+    "WooCommerce",
     "Full-Stack Development",
     "Next.js",
     "React",

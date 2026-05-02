@@ -82,7 +82,7 @@ export function Navbar() {
           </motion.a>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-1">
+          <div className="hidden lg:flex items-center gap-1">
             {navLinks.map((link) => (
               <motion.a
                 key={link.href}
@@ -116,7 +116,7 @@ export function Navbar() {
           </div>
 
           {/* Desktop Actions */}
-          <div className="hidden md:flex items-center gap-2">
+          <div className="hidden lg:flex items-center gap-2">
             <motion.div whileHover={{ scale: 1.05 }} transition={{ duration: 0.2 }}>
               <Button
                 variant="outline"
@@ -135,7 +135,7 @@ export function Navbar() {
           </div>
 
           {/* Mobile Menu Button */}
-          <div className="flex md:hidden items-center gap-2">
+          <div className="flex lg:hidden items-center gap-2">
             <ThemeToggle />
             <LanguageToggle />
             <Button
@@ -160,7 +160,7 @@ export function Navbar() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.2 }}
-            className="md:hidden border-t border-border/50 bg-background/70 backdrop-blur-xl"
+            className="lg:hidden border-t border-border/50 bg-background/70 backdrop-blur-xl"
           >
             <div className="py-4 space-y-1">
               {navLinks.map((link) => (

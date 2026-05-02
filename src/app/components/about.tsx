@@ -231,7 +231,7 @@ export function About() {
                     viewport={{ once: true }}
                     className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-cyan-600 to-teal-500 bg-clip-text text-transparent mb-2"
                   >
-                    <Counter target={25} suffix="+" />
+                    <Counter target={40} suffix="+" />
                   </motion.p>
                   <p className="text-sm text-muted-foreground">
                     {ui.about.statsProjects}
