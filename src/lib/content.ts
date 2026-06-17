@@ -46,7 +46,7 @@ const en = {
       title: "WordPress Specialist, QA & AI-Assisted Product Builder",
       company: "OctaSys",
       location: "Remote",
-      period: "Jun 2025 - Feb 2026",
+      period: "Mar 2025 - Feb 2026",
       achievements: [
         "Combined WordPress delivery experience with QA testing, bug reproduction, release checks, and AI-assisted development workflows",
         "Validated web and product features through manual testing, regression checks, cross-device reviews, and detailed issue reporting",
@@ -57,10 +57,10 @@ const en = {
     },
     {
       id: "exp-2",
-      title: "Project Coordinator & Technical Specialist",
+      title: "Project Manager & Technical Specialist",
       company: "OctaSys",
       location: "Remote",
-      period: "Sep 2024 - Jun 2025",
+      period: "Oct 2024 - Mar 2025",
       achievements: [
         "Coordinated client and internal website work across design, development, QA, documentation, and support",
         "Translated requirements into actionable tasks, tracked delivery details, and helped keep releases aligned with business priorities",
@@ -74,7 +74,7 @@ const en = {
       title: "Frontend WordPress Developer & Technical Support Engineer",
       company: "OctaSys",
       location: "Remote",
-      period: "Nov 2021 - Sep 2024",
+      period: "Nov 2021 - Oct 2024",
       achievements: [
         "Built and customized 50+ WordPress and Elementor websites, including client websites, premium theme demos, product landing pages, and documentation sites",
         "Created responsive Elementor layouts from design requirements across SaaS, hotel, ecommerce, agency, architecture, AI product, food, and booking categories",
