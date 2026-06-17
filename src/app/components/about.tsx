@@ -7,7 +7,15 @@ import { Card } from "./ui/card";
 import { useRef, useEffect, useState } from "react";
 import { useLanguage } from "../contexts/language-context";
 
-function Counter({ target, suffix = "" }: { target: number; suffix?: string }) {
+function Counter({
+  target,
+  suffix = "",
+  prefix = "",
+}: {
+  target: number;
+  suffix?: string;
+  prefix?: string;
+}) {
   const [count, setCount] = useState(0);
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
@@ -37,6 +45,7 @@ function Counter({ target, suffix = "" }: { target: number; suffix?: string }) {
 
   return (
     <span ref={ref}>
+      {prefix}
       {count}
       {suffix}
     </span>
@@ -217,7 +226,7 @@ export function About() {
                     viewport={{ once: true }}
                     className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent mb-2"
                   >
-                    <Counter target={4} suffix="+" />
+                    <Counter target={10} prefix="~" />
                   </motion.p>
                   <p className="text-sm text-muted-foreground">
                     {ui.about.statsYears}
@@ -231,7 +240,7 @@ export function About() {
                     viewport={{ once: true }}
                     className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-cyan-600 to-teal-500 bg-clip-text text-transparent mb-2"
                   >
-                    <Counter target={40} suffix="+" />
+                    <Counter target={50} suffix="+" />
                   </motion.p>
                   <p className="text-sm text-muted-foreground">
                     {ui.about.statsProjects}
@@ -245,7 +254,7 @@ export function About() {
                     viewport={{ once: true }}
                     className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-teal-600 to-green-500 bg-clip-text text-transparent mb-2"
                   >
-                    <Counter target={100} suffix="%" />
+                    <Counter target={4} suffix=".5" />
                   </motion.p>
                   <p className="text-sm text-muted-foreground">
                     {ui.about.statsSatisfaction}

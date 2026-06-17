@@ -315,7 +315,6 @@ Edit animation parameters in component files:
 ### Content
 - [ ] Update all personal information in `/src/lib/content.ts`
 - [ ] Replace placeholder project links with real URLs
-- [ ] Add CV PDF file at `/public/CV_en.pdf`
 - [ ] Verify all email/website/LinkedIn links are correct
 - [ ] Update GitHub link in structured-data.ts (if applicable)
 
@@ -345,7 +344,6 @@ Edit animation parameters in component files:
 ## 🐛 Known Limitations / Future Enhancements
 
 ### Placeholders
-- CV link points to `/public/CV_en.pdf` (file needs to be added)
 - Some project links use `#` placeholders
 - No actual case study pages for projects
 

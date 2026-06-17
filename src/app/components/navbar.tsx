@@ -1,12 +1,11 @@
 "use client";
 
-import { Download, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { motion } from "motion/react";
 import { useEffect, useState } from "react";
 import { getContent } from "../../lib/content";
 import { Button } from "./ui/button";
 import { ThemeToggle } from "./theme-toggle";
-import { LanguageToggle } from "./language-toggle";
 import { useLanguage } from "../contexts/language-context";
 
 export function Navbar() {
@@ -117,27 +116,12 @@ export function Navbar() {
 
           {/* Desktop Actions */}
           <div className="hidden lg:flex items-center gap-2">
-            <motion.div whileHover={{ scale: 1.05 }} transition={{ duration: 0.2 }}>
-              <Button
-                variant="outline"
-                size="sm"
-                asChild
-                className="gap-2 backdrop-blur-sm"
-              >
-                <a href="/CV_en.pdf" download>
-                  <Download className="h-4 w-4" />
-                  {ui.navbar.cv}
-                </a>
-              </Button>
-            </motion.div>
             <ThemeToggle />
-            <LanguageToggle />
           </div>
 
           {/* Mobile Menu Button */}
           <div className="flex lg:hidden items-center gap-2">
             <ThemeToggle />
-            <LanguageToggle />
             <Button
               variant="ghost"
               size="icon"
@@ -180,14 +164,6 @@ export function Navbar() {
                   {link.label}
                 </a>
               ))}
-              <div className="px-4 pt-2">
-                <Button variant="outline" size="sm" asChild className="w-full gap-2">
-                  <a href="/CV_en.pdf" download>
-                    <Download className="h-4 w-4" />
-                    {ui.navbar.downloadCv}
-                  </a>
-                </Button>
-              </div>
             </div>
           </motion.div>
         )}

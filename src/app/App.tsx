@@ -6,6 +6,7 @@ import { Hero } from "./components/hero";
 import { About } from "./components/about";
 import { Experience } from "./components/experience";
 import { Projects } from "./components/projects";
+import { AiAssistedDevelopment } from "./components/ai-assisted-development";
 import { WordPressShowcase } from "./components/wordpress-showcase";
 import { Skills } from "./components/skills";
 import { Contact } from "./components/contact";
@@ -69,6 +70,7 @@ function AppShell() {
           <About />
           <Experience />
           <Projects />
+          <AiAssistedDevelopment />
           <WordPressShowcase />
           <Skills />
           <Contact />

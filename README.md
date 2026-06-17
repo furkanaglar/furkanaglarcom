@@ -122,10 +122,9 @@ Key animation components:
 
 ### Files to Add
 
-1. **CV PDF**: Place your CV at `/public/CV_en.pdf` (or update links in components)
-2. **Favicon**: Add favicon files to `/public/` directory
-3. **Project Screenshots**: Add images for project cards (optional)
-4. **SEO Metadata**: Add proper Open Graph images and Twitter cards
+1. **Favicon**: Add favicon files to `/public/` directory
+2. **Project Screenshots**: Add images for project cards (optional)
+3. **SEO Metadata**: Add proper Open Graph images and Twitter cards
 
 ### Optional Enhancements
 

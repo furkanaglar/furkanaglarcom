@@ -172,10 +172,9 @@ All content is **factual and based on the CV provided**:
 ## 🎯 What's Next?
 
 ### Before Deployment
-1. **Add CV PDF** - Place at `/public/CV_en.pdf` (all links point here)
-2. **Update Links** - Replace any `#` placeholder links with real URLs
-3. **Add Favicon** - Add favicon files to `/public/` directory
-4. **Test Thoroughly** - Test on multiple devices and browsers
+1. **Update Links** - Replace any `#` placeholder links with real URLs
+2. **Add Favicon** - Add favicon files to `/public/` directory
+3. **Test Thoroughly** - Test on multiple devices and browsers
 
 ### Optional Enhancements
 - Add project screenshots to cards

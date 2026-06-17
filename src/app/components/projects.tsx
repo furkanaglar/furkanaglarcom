@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "motion/react";
-import { useEffect, useState } from "react";
 import { ExternalLink, Zap } from "lucide-react";
 import { getContent } from "../../lib/content";
 import { Card } from "./ui/card";
@@ -12,24 +11,6 @@ import { useLanguage } from "../contexts/language-context";
 export function Projects() {
   const { language } = useLanguage();
   const { projects, ui } = getContent(language);
-  const allLabel = ui.projects.filterAll;
-  const [activeFilter, setActiveFilter] = useState(allLabel);
-
-  // Get all unique categories
-  const allCategories = [
-    allLabel,
-    ...new Set(projects.flatMap((p) => p.category)),
-  ];
-
-  // Filter projects
-  const filteredProjects =
-    activeFilter === allLabel
-      ? projects
-      : projects.filter((p) => p.category.includes(activeFilter));
-
-  useEffect(() => {
-    setActiveFilter(allLabel);
-  }, [allLabel]);
 
   return (
     <section id="projects" className="relative py-32 px-4 sm:px-6 lg:px-8 scroll-mt-20">
@@ -54,30 +35,11 @@ export function Projects() {
               {ui.projects.subheading}
             </span>
           </h2>
-
-          {/* Filter Pills */}
-          <div className="flex flex-wrap gap-3 mt-8">
-            {allCategories.map((category) => (
-              <motion.button
-                key={category}
-                onClick={() => setActiveFilter(category)}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className={`px-4 py-2 rounded-full text-sm font-medium mono transition-all duration-200 ${
-                  activeFilter === category
-                    ? "bg-foreground text-background"
-                    : "bg-muted hover:bg-muted/70"
-                }`}
-              >
-                {category}
-              </motion.button>
-            ))}
-          </div>
         </motion.div>
 
         {/* Projects Grid */}
         <div className="space-y-12">
-          {filteredProjects.map((project, index) => (
+          {projects.map((project, index) => (
             <motion.div
               key={project.id}
               initial={{ opacity: 0, y: 50 }}
@@ -252,18 +214,6 @@ export function Projects() {
           ))}
         </div>
 
-        {/* No Results Message */}
-        {filteredProjects.length === 0 && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className="text-center py-16"
-          >
-            <p className="text-lg text-muted-foreground">
-              {ui.projects.noResults}
-            </p>
-          </motion.div>
-        )}
       </div>
     </section>
   );

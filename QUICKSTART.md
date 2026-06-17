@@ -159,13 +159,12 @@ All animations follow these principles:
 
 Before deploying, make sure to:
 
-1. **Add CV PDF** - Place at `/public/CV_en.pdf` (or update all links)
-2. **Update Links** - Replace placeholder `#` links with real URLs
-3. **Add Favicon** - Add favicon files to `/public/`
-4. **Verify Contact Info** - Double-check email, website, LinkedIn URLs
-5. **Update GitHub Link** - Add your GitHub in structured-data.ts if you have one
-6. **Add Project Images** - Optional: add screenshots for project cards
-7. **Remove Placeholder Projects** - Or update with real project URLs
+1. **Update Links** - Replace placeholder `#` links with real URLs
+2. **Add Favicon** - Add favicon files to `/public/`
+3. **Verify Contact Info** - Double-check email, website, LinkedIn URLs
+4. **Update GitHub Link** - Add your GitHub in structured-data.ts if you have one
+5. **Add Project Images** - Optional: add screenshots for project cards
+6. **Remove Placeholder Projects** - Or update with real project URLs
 
 ---
 

@@ -4,13 +4,14 @@ import { motion, useScroll, useTransform } from "motion/react";
 import { ArrowDown, Mail, MapPin } from "lucide-react";
 import { SimpleIconLinkedin } from "./simple-icons";
 import { getContent } from "../../lib/content";
-import { TypewriterEffect } from "./typewriter-effect";
 import { useRef } from "react";
 import { useLanguage } from "../contexts/language-context";
+import { useIsMobile } from "./ui/use-mobile";
 
 export function Hero() {
   const { language } = useLanguage();
-  const { personalInfo, quickFacts, ui } = getContent(language);
+  const { personalInfo, ui } = getContent(language);
+  const isMobile = useIsMobile();
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -18,17 +19,18 @@ export function Hero() {
   });
   const opacity = useTransform(scrollYProgress, [0.6, 1], [1, 0]);
   const y = useTransform(scrollYProgress, [0, 0.6, 1], [0, 0, 250]);
+  const parallaxStyle = isMobile ? undefined : { opacity, y };
 
   return (
     <section
       ref={containerRef}
       className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-20 sm:pt-24"
     >
-      <motion.div style={{ opacity, y }} className="container mx-auto max-w-7xl">
+      <motion.div style={parallaxStyle} className="container mx-auto max-w-7xl">
         {/* Split Screen Layout */}
         <div className="grid md:grid-cols-2 gap-12 md:gap-12 lg:gap-20 items-center">
           {/* Left Side - Text Content */}
-          <div className="space-y-8 order-2 md:order-1">
+          <div className="space-y-7 order-2 md:order-1">
             {/* Label Tag */}
             <motion.div
               initial={{ opacity: 0, x: -20 }}
@@ -47,35 +49,45 @@ export function Hero() {
               </div>
             </motion.div>
 
-            {/* Name */}
+            {/* Main Positioning */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
             >
-              <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight">
-                {personalInfo.name.split(" ")[0]}
-                <br />
+              <p className="mb-3 text-sm font-bold uppercase tracking-wider text-muted-foreground mono">
+                {personalInfo.name}
+              </p>
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight">
                 <span className="bg-gradient-to-r from-blue-600 via-cyan-500 to-teal-500 bg-clip-text text-transparent">
-                  {personalInfo.name.split(" ")[1]}
+                  {ui.hero.headline}
                 </span>
               </h1>
+              <p className="mt-6 max-w-2xl text-lg md:text-xl leading-relaxed text-foreground/80">
+                {ui.hero.subheadline}
+              </p>
             </motion.div>
 
-            {/* Dynamic Title with Typewriter */}
+            {/* Proof Points */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-2xl md:text-3xl font-medium text-muted-foreground h-[2.5rem] md:h-[3rem]"
+              className="grid max-w-2xl grid-cols-1 gap-3 sm:grid-cols-3"
             >
-              <TypewriterEffect
-                words={quickFacts}
-                className="text-foreground"
-                typeSpeed={50}
-                deleteSpeed={40}
-                delayBetweenWords={1000}
-              />
+              {ui.hero.proofPoints.map((point) => (
+                <div
+                  key={point.label}
+                  className="rounded-lg border border-border/60 bg-card/60 px-4 py-3 backdrop-blur-sm"
+                >
+                  <p className="text-2xl font-bold text-foreground">
+                    {point.value}
+                  </p>
+                  <p className="mt-1 text-xs leading-snug text-muted-foreground">
+                    {point.label}
+                  </p>
+                </div>
+              ))}
             </motion.div>
 
             {/* Location & Status */}
@@ -147,74 +159,19 @@ export function Hero() {
             className="order-1 md:order-2 flex justify-center md:justify-end"
           >
             <div className="relative max-w-full px-4">
-              {/* Decorative Elements */}
-              <motion.div
-                animate={{
-                  rotate: [0, 360],
-                }}
-                transition={{
-                  duration: 20,
-                  repeat: Infinity,
-                  ease: "linear",
-                }}
-                className="absolute inset-0 bg-gradient-to-r from-blue-500/20 via-cyan-500/20 to-teal-500/20 dark:from-blue-500/10 dark:via-cyan-500/10 dark:to-teal-500/10 rounded-3xl blur-2xl"
-              />
+              <div className="relative w-72 sm:w-80 lg:w-96 xl:w-[28rem]">
+                <div className="absolute -inset-4 rounded-3xl border border-border/60 bg-card/35 shadow-2xl shadow-blue-950/5 dark:shadow-black/20" />
+                <div className="absolute -right-3 top-10 h-32 w-1 rounded-full bg-gradient-to-b from-blue-500 via-cyan-500 to-teal-500" />
 
-              {/* Main Image Container */}
-              <div className="relative w-72 h-72 sm:w-80 sm:h-80 lg:w-96 lg:h-96 xl:w-[28rem] xl:h-[28rem]">
-                {/* Border Animation */}
-                <motion.div
-                  animate={{
-                    rotate: [0, 360],
-                  }}
-                  transition={{
-                    duration: 15,
-                    repeat: Infinity,
-                    ease: "linear",
-                  }}
-                  className="absolute inset-0 rounded-3xl overflow-hidden"
-                >
-                  <div className="absolute inset-0 rounded-3xl border-4 border-transparent bg-gradient-to-r from-blue-500 via-cyan-500 to-teal-500 [mask:linear-gradient(#fff_0_0)_content-box,linear-gradient(#fff_0_0)] [mask-composite:exclude]" />
-                </motion.div>
-
-                {/* Image */}
-                <div className="absolute inset-2 rounded-3xl overflow-hidden bg-card">
-                  <img
-                    src="/images/furkanaglar.jpg"
-                    alt={personalInfo.name}
-                    className="w-full h-full object-cover"
-                  />
+                <div className="relative aspect-square overflow-hidden rounded-2xl border border-border/70 bg-card p-2 shadow-xl shadow-blue-950/10 dark:shadow-black/30">
+                  <div className="h-full w-full overflow-hidden rounded-xl bg-muted">
+                    <img
+                      src="/images/furkanaglar.jpg"
+                      alt={personalInfo.name}
+                      className="h-full w-full object-cover"
+                    />
+                  </div>
                 </div>
-
-                {/* Code Snippets Decorations */}
-                <motion.div
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.6, delay: 0.8 }}
-                  className="absolute -right-10 lg:-right-4 -top-3 lg:top-8 bg-card/90 backdrop-blur-sm border border-border rounded-lg p-2 sm:p-3 shadow-xl"
-                >
-                  <code className="text-xs mono text-green-500">
-                    <span className="text-blue-500">const</span> {ui.hero.codeStatusLabel} ={" "}
-                    <span className="text-orange-500">"{ui.hero.codeStatusValue}"</span>
-                  </code>
-                </motion.div>
-
-                <motion.div
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.6, delay: 1 }}
-                  className="absolute -left-8 lg:-left-4 -bottom-3 lg:bottom-8 bg-card/90 backdrop-blur-sm border border-border rounded-lg p-2 sm:p-3 shadow-xl"
-                >
-                  <code className="text-xs mono">
-                    <span className="text-purple-500">
-                      {ui.hero.codeExperienceLabel}
-                    </span>
-                    <span className="text-muted-foreground">.</span>
-                    <span className="text-blue-500">{ui.hero.codeYearsLabel}</span>
-                    <span className="text-muted-foreground"> {">"}= </span>
-                    <span className="text-orange-500">4</span>
-                  </code>
-                </motion.div>
               </div>
             </div>
           </motion.div>
